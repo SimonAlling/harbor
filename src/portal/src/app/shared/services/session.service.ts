@@ -26,7 +26,7 @@ import {
 } from "../units/utils";
 import { FlushAll } from "../units/cache-util";
 import { SignInCredential } from "../../account/sign-in/sign-in-credential";
-import { DeFaultLang } from "../entities/shared.const";
+import { DefaultLang } from "../entities/shared.const";
 
 
 const signInUrl = '/c/login';
@@ -160,7 +160,7 @@ export class SessionService {
 
         let backendLang = langMap[lang];
         if (!backendLang) {
-            backendLang = langMap[DeFaultLang];
+            backendLang = langMap[DefaultLang];
         }
 
         let getUrl = langEndpoint + "?lang=" + backendLang;

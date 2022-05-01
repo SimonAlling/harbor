@@ -25,8 +25,8 @@ import { SkinableConfig } from "../../../services/skinable-config.service";
 import {
     CommonRoutes,
     DEFAULT_LANG_LOCALSTORAGE_KEY,
-    DeFaultLang,
-    languageNames,
+    DefaultLang,
+    LANGUAGES,
 } from "../../entities/shared.const";
 import { CustomStyle, HAS_STYLE_MODE, StyleMode } from "../../../services/theme";
 
@@ -41,7 +41,8 @@ export class NavigatorComponent implements OnInit {
     @Output() showAccountSettingsModal = new EventEmitter<ModalEvent>();
     @Output() showDialogModalAction = new EventEmitter<ModalEvent>();
 
-    selectedLang: string = DeFaultLang;
+    readonly guiLanguages = Object.entries(LANGUAGES);
+    selectedLang: string = DefaultLang;
     appTitle: string = 'APP_TITLE.HARBOR';
     customStyle: CustomStyle;
     constructor(
@@ -77,7 +78,7 @@ export class NavigatorComponent implements OnInit {
     }
 
     public get currentLang(): string {
-        return languageNames[this.selectedLang];
+        return LANGUAGES[this.selectedLang];
     }
 
     public get admiralLink(): string {

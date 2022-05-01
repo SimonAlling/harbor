@@ -176,9 +176,9 @@ export const REFRESH_TIME_DIFFERENCE = 10000;
 //
 
 
-export const supportedLangs = ['en-us', 'zh-cn', 'zh-tw', 'es-es', 'fr-fr', 'pt-br', 'tr-tr', 'de-de'];
-export const DeFaultLang = "en-us";
-export const languageNames = {
+export const DefaultLang = "en-us";
+export type SupportedLanguage = keyof typeof LANGUAGES;
+export const LANGUAGES = {
   "en-us": "English",
   "zh-cn": "中文简体",
   "zh-tw": "中文繁體",
@@ -187,7 +187,8 @@ export const languageNames = {
   "pt-br": "Português do Brasil",
   "tr-tr": "Türkçe",
   "de-de": "Deutsch"
-};
+} as const;
+export const supportedLangs = Object.keys(LANGUAGES) as SupportedLanguage[];
 /**
  * The default cookie key used to store current used language preference.
  */
